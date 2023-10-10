@@ -1,2 +1,5 @@
 *.exe
 *.o
+*.out
+*.so
+.bin
