@@ -47,5 +47,20 @@ int main()
 
     printf("\n");
 
+    char word[] = {
+        'H',
+        'e',
+        'l',
+        'l',
+        'o',
+    }; // String
+
+    size = sizeof(word) / sizeof(word[0]); // Size of word is 5
+
+    for (int i = 0; i < size; i++)
+    {
+        putchar(word[i]); // putchar() prints a character
+    }
+
     return 0;
 }
