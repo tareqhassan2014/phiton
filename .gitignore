@@ -2,4 +2,4 @@
 *.o
 *.out
 *.so
-.bin
+*.bin
