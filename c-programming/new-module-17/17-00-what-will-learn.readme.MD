@@ -40,9 +40,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contributors
 
--   Your Name: [Your GitHub Profile](https://github.com/yourusername)
+-   Tareq Hassan: [https://github.com/tareqhassan2014](https://github.com/tareqhassan2014)
 
-Feel free to contribute to this project by making pull requests or reporting issues. For questions or feedback, please reach out to us through the [GitHub Issues](https://github.com/yourusername/your-repo/issues) section.
+Feel free to contribute to this project by making pull requests or reporting issues. For questions or feedback, please reach out to us through the [GitHub Issues](https://github.com/tareqhassan2014/phiton/issues) section.
 
 Happy coding!
 

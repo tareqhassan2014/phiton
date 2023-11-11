@@ -125,5 +125,6 @@
     "code-runner.terminalRoot": "/",
     "code-runner.executorMapByGlob": {
         "pom.xml": "cd $dir && mvn clean package"
-    }
+    },
+    "cSpell.words": ["Hassan"]
 }
