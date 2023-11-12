@@ -125,5 +125,9 @@
     "code-runner.terminalRoot": "/",
     "code-runner.executorMapByGlob": {
         "pom.xml": "cd $dir && mvn clean package"
+    },
+    "files.associations": {
+        "random": "cpp",
+        "iostream": "cpp"
     }
 }
