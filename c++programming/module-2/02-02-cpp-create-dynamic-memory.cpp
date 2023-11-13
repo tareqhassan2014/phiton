@@ -25,6 +25,6 @@ int main()
     // *x = 3.34567;
 
     // cout << fixed << setprecision(2) << *x << endl;
-    cout << *x;
+    // cout << *x;
     return 0;
 }
