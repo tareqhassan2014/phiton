@@ -15,10 +15,10 @@ int *fun()
 
 int main()
 {
-    int *arr = fun();
+    int *p = fun();
     for (int i = 0; i < 3; i++)
     {
-        cout << arr[i] << " ";
+        cout << p[i] << " ";
     }
 
     return 0;
