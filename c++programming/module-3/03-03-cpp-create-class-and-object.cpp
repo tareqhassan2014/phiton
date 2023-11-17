@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class student
+class Student
 {
 public:
     char name[100];
@@ -25,7 +25,7 @@ int main()
 
     // namar maja space takla code
 
-    student a, b;
+    Student a, b;
 
     cin.getline(a.name, 100);
     cin >> a.roll >> a.cgpa;

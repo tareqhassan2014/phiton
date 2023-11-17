@@ -1,14 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class student
+class Student
 {
 public:
     int roll;
     int cls;
     double gpa;
 
-    student(int r, int c, double g)
+    Student(int r, int c, double g)
     {
         roll = r;
         cls = c;
@@ -16,18 +16,18 @@ public:
     }
 };
 
-student *fun()
+Student *fun()
 {
     // objet banano;
     // student rahim(10, 5, 3.56);
-    student *rahim = new student(10, 5, 3.56);
+    Student *rahim = new Student(10, 5, 3.56);
 
     return rahim;
 }
 
 int main()
 {
-    student *ans = fun();
+    Student *ans = fun();
     cout << ans->roll << " " << ans->cls
          << " " << ans->gpa << " " << endl;
 

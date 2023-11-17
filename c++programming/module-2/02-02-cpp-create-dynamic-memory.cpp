@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// function diya variable create
+//  create variable using function
 int *fun()
 {
     int *p = new int;

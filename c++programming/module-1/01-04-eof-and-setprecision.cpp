@@ -11,7 +11,7 @@ int main()
     // }
 
     // setprecision in cpp.
-    // setprecision babohar kora hoy 3.34256 number a point ar por 2/3 number naoar jonno.
+    // setprecision use kora hoy 3.34256 number a point ar por 2/3 number naoar jonno.
 
     double a;
     cin >> a;

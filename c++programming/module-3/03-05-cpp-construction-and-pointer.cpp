@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class student
+class Student
 {
 public:
     int roll;
@@ -16,7 +16,7 @@ public:
     // }
 
     // student function ar moddo public ar same name use korar code.
-    student(int roll, int cls, double gpa)
+    Student(int roll, int cls, double gpa)
     {
         this->roll = roll;
         this->cls = cls;
@@ -26,8 +26,8 @@ public:
 
 int main()
 {
-    student rahim(2, 8, 4.67);
-    student karim(7, 8, 3.67);
+    Student rahim(2, 8, 4.67);
+    Student karim(7, 8, 3.67);
 
     cout << rahim.roll << " " << rahim.cls << " " << rahim.gpa << endl;
 
