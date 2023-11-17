@@ -26,7 +26,7 @@ int main()
             for (int j = i + 1; j < n; j++)
             {
                 int ans = ar[i] + ar[j] + j - i;
-                int mn_sum = min(mn_sum, ans);
+                mn_sum = min(mn_sum, ans);
             }
         }
 
