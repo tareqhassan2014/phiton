@@ -19,10 +19,9 @@ public:
 Student *fun()
 {
     // objet banano;
-    // student rahim(10, 5, 3.56);
-    Student *rahim = new Student(10, 5, 3.56);
-
-    return rahim;
+    Student rahim(10, 5, 3.56);
+    Student *p = &rahim;
+    return p;
 }
 
 int main()
