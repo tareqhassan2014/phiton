@@ -1,0 +1,1 @@
+ cout << rakib->name << " " << rakib->age << " " << endl;
