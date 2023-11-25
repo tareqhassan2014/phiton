@@ -4,22 +4,65 @@ using namespace std;
 int main()
 {
 
-    string s;
+    string str;
 
-    getline(cin, s);
-
-    stringstream ss(s);
-
-    string word;
+    getline(cin, str);
 
     int count = 0;
+    bool new_word = false;
 
-    while (ss >> word)
+    for (char c : str)
     {
-        count++;
+
+        if (isalpha(c))
+        {
+            if (!new_word)
+            {
+                count++;
+                new_word == true;
+            }
+        }
+        else
+        {
+            new_word == false;
+        }
     }
 
     cout << count << endl;
 
     return 0;
 }
+
+/*
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    string str;
+    getline(cin, str);
+
+    int count = 0;
+    bool new_word = false;
+
+    for (char c : str)
+    {
+        if (isalpha(c))
+        {
+            if (!new_word)
+            {
+                count++;
+                new_word = true;
+            }
+        }
+        else
+        {
+            new_word = false;
+        }
+    }
+
+    cout << count << endl;
+
+    return 0;
+}
+ */
