@@ -14,8 +14,9 @@ int main()
 
         while (s.find(x) != -1)
         {
-            s.replace(s.find(x), 4, '#');
+            s.replace(s.find(x), x.length(), "#");
         }
+
         cout << s << endl;
     }
 

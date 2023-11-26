@@ -27,18 +27,21 @@ int main()
     // name moddo space takba
     int n;
     cin >> n;
-    student arr[n];
-    for (int i = 0; i < n; i++)
 
+    student arr[n];
+
+    for (int i = 0; i < n; i++)
     {
         getchar();
         // or cin.ignore();
         getline(cin, arr[i].name);
         cin >> arr[i].roll >> arr[i].marks;
     }
+
     for (int i = 0; i < n; i++)
     {
         cout << arr[i].name << " " << arr[i].roll << " " << arr[i].marks << " " << endl;
     }
+
     return 0;
 }

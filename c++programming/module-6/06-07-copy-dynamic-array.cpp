@@ -24,7 +24,6 @@ int main()
     *rakib = *sakib;
     delete sakib;
     cout << rakib->name << " " << rakib->age << " " << endl;
-    // cout << sakib->name << " " << sakib->age << " " << endl;
 
     return 0;
 }
