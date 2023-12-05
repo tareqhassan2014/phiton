@@ -1,0 +1,1 @@
+  // cout << *p << endl; // value print hoba.

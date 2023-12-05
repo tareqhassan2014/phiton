@@ -4,16 +4,23 @@ using namespace std;
 int main()
 {
 
-    // string s, x;
+    string str, x;
 
-    // cin >> s >> x;
+    getline(cin, str);
 
-    // int count = 0;
-    // while (s.find("x") != 1)
-    // {
-    //     count++;
-    // }
-    // cout << count;
+    cin >> x;
+
+    cout << str << endl
+         << x << endl;
+
+    stringstream ss(str);
+
+    string word;
+
+    while (ss << word)
+    {
+        cout << word << endl;
+    }
 
     return 0;
 }
