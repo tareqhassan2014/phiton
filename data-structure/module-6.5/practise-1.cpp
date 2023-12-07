@@ -23,6 +23,7 @@ void insert_a_tail(Node *&head, int value)
     }
 
     Node *tmp = head;
+
     while (tmp->next != NULL)
     {
         tmp = tmp->next;
@@ -35,35 +36,37 @@ void print_linked_list(Node *head)
     while (tmp != NULL)
     {
         cout << tmp->value << " ";
+
         tmp = tmp->next;
     }
 }
-// void print_size(Node *head)
-// {
-//     int size = 0;
-//     Node *tmp = head;
-//     while (tmp != NULL)
-//     {
-//         size++;
-//     }
-// }
+int print_size(Node *head)
+{
+    Node *tmp = head;
+    int count = 0;
+    while (tmp != NULL)
+    {
+        count++;
+        tmp = tmp->next;
+    }
+    return count;
+}
 
 int main()
 {
     int value;
     Node *head = NULL;
-
     while (true)
     {
         cin >> value;
-        while (value == -1)
+        if (value == -1)
         {
             break;
         }
-
         insert_a_tail(head, value);
     }
-    print_linked_list(head);
-    // print_size(head);
+
+    int ans = print_size(head);
+    // print_linked_list(head);
     return 0;
 }
