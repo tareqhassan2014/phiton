@@ -1,1 +1,1 @@
-  // cout << *p << endl; // value print hoba.
+print_linked_list(head);
