@@ -14,22 +14,29 @@ public:
     }
 };
 
-void insert_a_tail(Node *head, Node *tail, int value)
+void insert_a_tail(Node *&head, int value)
 {
     Node *new_node = new Node(value);
-    if (head == NULL)
+
+    while (head == NULL)
     {
         head = new_node;
-        tail = new_node;
+        return;
     }
-    tail->next = new_node;
-    tail = new_node;
+
+    Node *tmp = head;
+
+    while (tmp->next != NULL)
+    {
+        tmp = tmp->next;
+    }
+    tmp->next = new_node;
 }
 
 void print_linked_list(Node *head)
 {
     Node *tmp = head;
-    if (tmp == NULL)
+    if (tmp != NULL)
     {
         cout << tmp->value << " ";
         tmp = tmp->next;
@@ -44,13 +51,8 @@ void insert_at_any_position(Node *head, int position, int value)
     for (int i = 1; i < position - 1; i++)
     {
         tmp = tmp->next;
-        if (tmp == NULL)
-        {
-            cout << "Invalid insert";
-            return;
-        }
     }
-    new_node.next = tmp->next;
+    new_node->next = tmp->next;
     tmp->next = new_node;
 }
 
@@ -69,42 +71,53 @@ int main()
 
     while (true)
     {
-        cout << "position 1:insert a tail:";
-        cout << "position 2:print a linked list:";
-        cout << "position 3:insert at any position:";
-        cout << "position 4:insert a head:";
-        cout << "position 5:terminate";
+        cout << "position 1:insert a tail:" << endl;
+        cout << "position 2:print a linked list:" << endl;
+        cout << "position 3:insert at any position:" << endl;
+        cout << "position 4:insert a head:" << endl;
+        cout << "position 5:terminate:" << endl;
 
         int position;
         cin >> position;
 
         if (position == 1)
         {
-            cout << "Enter the value";
             int value;
+            cout << "Enter the value:";
             cin >> value;
-            insert_a_tail(head, tail, value)
+            insert_a_tail(head, tail, value);
         }
         if (position == 2)
         {
-            print_linked_list(head)
+            cout << "Enter linked list:";
+            print_linked_list(head);
+            cout << endl;
         }
         if (position == 3)
         {
-            cout << "Enter the position";
+
             int position, value;
-            cout << "Enter the value";
-            cin >> position >> value;
+            cout << "Enter the position:";
+            cin >> position;
+            cout << "Enter the value:";
+            cin >> value;
             if (position == 0)
             {
-                insert_a_head(head, value)
+                insert_a_head(head, value);
             }
             else
             {
-                insert_at_any_position(head, position, value)
+                insert_at_any_position(head, position, value);
             }
         }
         if (position == 4)
+        {
+            int value;
+            cout << "Enter value:";
+            cin >> value;
+            insert_a_head(head, value);
+        }
+        if (position == 5)
         {
             break;
         }

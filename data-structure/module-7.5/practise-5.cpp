@@ -59,8 +59,8 @@ int main()
             {
                 swap(i->value, j->value);
             }
-        }
+                }
     }
-
+    print_linked_list(head);
     return 0;
 }

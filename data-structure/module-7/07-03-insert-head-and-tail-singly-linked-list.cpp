@@ -89,6 +89,7 @@ int main()
     b->next = c;
     c->next = d;
     print_linked_list(head);
+    cout << "tail:" << tail->value;
 
     int position, value;
     cin >> position >> value;
@@ -113,7 +114,7 @@ int main()
     }
     // insert_a_Node(head, 7, 80);
     print_linked_list(head);
-    cout <<
+    cout << "tail:" << tail->value;
 
-        return 0;
+    return 0;
 }

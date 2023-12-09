@@ -13,24 +13,24 @@ public:
         this->next = NULL;
     }
 };
-void insert_a_tail(Node *&head, int value)
+
+// insert at tail
+void insert_a_tail(Node *&head, Node *&tail, int value)
 {
     Node *new_node = new Node(value);
 
-    while (head == NULL)
+    if (head == NULL)
     {
         head = new_node;
-        return;
+        tail = new_node;
     }
-
-    Node *tmp = head;
-
-    while (tmp->next != NULL)
+    else
     {
-        tmp = tmp->next;
+        tail->next = new_node;
+        tail = new_node;
     }
-    tmp->next = new_node;
 }
+
 void print_linked_list(Node *head)
 {
     Node *tmp = head;
@@ -40,37 +40,59 @@ void print_linked_list(Node *head)
 
         tmp = tmp->next;
     }
+
+    cout << endl;
 }
+
+// insert at head
+void insert_at_head(Node *&head, int value)
+{
+    Node *new_node = new Node(value);
+
+    new_node->next = head;
+
+    head = new_node;
+};
 
 int main()
 {
     Node *head = NULL;
+    Node *tail = NULL;
 
     while (true)
     {
-        cout << "option-1:insert a tail" << endl;
-        cout << "option-2:print linked list" << endl;
-        cout << "option-3:terminal" << endl;
+        cout << " 0. Insert at head" << endl;
+        cout << " 1. Insert at tail" << endl;
+        cout << "-1. Exit" << endl;
 
         int option;
         cin >> option;
 
-        if (option == 1)
+        if (option == 0)
         {
             cout << " Enter value :";
+
             int value;
             cin >> value;
-            insert_a_tail(head, value);
-        }
 
-        else if (option == 2)
-        {
-            cout << " Enter linked list :";
+            insert_at_head(head, value);
 
             print_linked_list(head);
         }
 
-        else if (option == 3)
+        else if (option == 1)
+        {
+            cout << " Enter value :";
+
+            int value;
+            cin >> value;
+
+            insert_a_tail(head, tail, value);
+
+            print_linked_list(head);
+        }
+
+        else if (option == -1)
         {
             break;
         }

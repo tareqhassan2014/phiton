@@ -16,51 +16,40 @@ void insert_a_tail(Node *&head, Node *&tail, int value)
 {
     Node *new_node = new Node(value);
 
-    while (head == NULL)
+    while ((head == NULL))
     {
         head = new_node;
         tail = new_node;
     }
-
     tail->next = new_node;
     tail = new_node;
 }
+
 void print_linked_list(Node *head)
 {
     Node *tmp = head;
-    while (tmp != NULL)
+    while (tmp != head)
     {
         cout << tmp->value << " ";
-
         tmp = tmp->next;
     }
-}
-void print_revarse(Node *n)
-{
-    if (n == NULL)
-        return;
-
-    print_revarse(n->next);
-
-    cout << n->value << " ";
 }
 
 int main()
 {
-    int value;
     Node *head = NULL;
     Node *tail = NULL;
+
+    int value;
     while (true)
     {
         cin >> value;
-        if (value == -1)
+        while (value == -1)
         {
             break;
         }
         insert_a_tail(head, tail, value);
     }
-
-    print_revarse(head);
-
+    print_linked_list(head);
     return 0;
 }

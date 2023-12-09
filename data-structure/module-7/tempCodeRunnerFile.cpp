@@ -1,5 +1,1 @@
- // if (tmp == NULL)
-        // {
-        //     cout << "Invalid insert";
-        //     return;
-        // }
+ // print_linked_list(head);
