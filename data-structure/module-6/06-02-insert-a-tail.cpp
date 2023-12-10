@@ -37,10 +37,8 @@ void print_linked_list(Node *head)
     while (tmp != NULL)
     {
         cout << tmp->value << " ";
-
         tmp = tmp->next;
     }
-
     cout << endl;
 }
 
@@ -48,11 +46,9 @@ void print_linked_list(Node *head)
 void insert_at_head(Node *&head, int value)
 {
     Node *new_node = new Node(value);
-
     new_node->next = head;
-
     head = new_node;
-};
+}
 
 int main()
 {
@@ -71,27 +67,19 @@ int main()
         if (option == 0)
         {
             cout << " Enter value :";
-
             int value;
             cin >> value;
-
             insert_at_head(head, value);
-
             print_linked_list(head);
         }
-
         else if (option == 1)
         {
             cout << " Enter value :";
-
             int value;
             cin >> value;
-
             insert_a_tail(head, tail, value);
-
             print_linked_list(head);
         }
-
         else if (option == -1)
         {
             break;

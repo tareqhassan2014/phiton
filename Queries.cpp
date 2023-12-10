@@ -14,15 +14,34 @@ public:
     }
 };
 
-// insert at head
-void insert_at_head(Node *&head, int value)
+// get length of linked list
+int get_length(Node *head)
 {
-    Node *new_node = new Node(value);
+    int length = 0;
+    while (head != NULL)
+    {
+        length++;
+        head = head->next;
+    }
+    return length;
+}
 
-    new_node->next = head;
+// insert at head
+void insert_at_head(Node *&head, Node *&tail, int val)
+{
+    Node *new_node = new Node(val);
 
-    head = new_node;
-};
+    if (head == NULL)
+    {
+        head = new_node;
+        tail = new_node;
+    }
+    else
+    {
+        new_node->next = head;
+        head = new_node;
+    }
+}
 
 // insert at tail
 void insert_a_tail(Node *&head, Node *&tail, int value)
@@ -40,28 +59,52 @@ void insert_a_tail(Node *&head, Node *&tail, int value)
         tail = new_node;
     }
 }
-// delete at nth position
-void delete_at_nth(Node *&head, int n)
-{
-    Node *temp = head;
 
-    if (n == 1)
+// delete at nth position
+void delete_at_nth(Node *&head, Node *&tail, int n)
+{
+    // check if head is null
+    if (head == NULL)
     {
-        head = temp->next;
+        return;
+    }
+    // check if n is 0
+    if (n == 0)
+    {
+        Node *temp = head;
+        head = head->next;
         delete temp;
         return;
     }
 
-    for (int i = 0; i < n - 2; i++)
+    // check if n is greater than length of linked list do nothing
+    int length = get_length(head);
+    if (n >= length)
+    {
+        return;
+    }
+
+    // delete at nth position
+    Node *temp = head;
+    for (int i = 0; i < n - 1; i++)
     {
         temp = temp->next;
     }
 
-    Node *temp2 = temp->next;
-
-    temp->next = temp2->next;
-
-    delete temp2;
+    // check if n is last node
+    if (temp->next == tail)
+    {
+        Node *to_delete = temp->next;
+        temp->next = NULL;
+        tail = temp;
+        delete to_delete;
+    }
+    else
+    {
+        Node *to_delete = temp->next;
+        temp->next = temp->next->next;
+        delete to_delete;
+    }
 };
 
 // print linked list
@@ -90,16 +133,16 @@ int main()
 
         if (query == 0)
         {
-            insert_at_head(head, value);
+            insert_at_head(head, tail, value);
         }
         else if (query == 1)
         {
             insert_a_tail(head, tail, value);
         }
-        // else if (query == 2)
-        // {
-        //     delete_at_nth(head, value);
-        // }
+        else if (query == 2)
+        {
+            delete_at_nth(head, tail, value);
+        }
 
         print(head);
     }
