@@ -25,18 +25,17 @@ void insert_a_tail1(Node *&head1, Node *&tail1, int value)
     tail1->next = new_node1;
     tail1 = new_node1;
 }
-void insert_a_tail2(Node *&head2, Node *&tail2, int value)
+int size(Node *head1)
 {
-    Node *new_node = new Node(value);
-
-    while (head2 == NULL)
+    Node *tmp = head1;
+    int count = 0;
+    while (tmp != NULL)
     {
-        head2 = new_node;
-        tail2 = new_node;
+        count++;
+        tmp = tmp->next;
     }
-
-    tail2->next = new_node;
-    tail2 = new_node;
+    return count;
+    cout << endl;
 }
 
 void print_linked_list1(Node *head1)
@@ -50,47 +49,25 @@ void print_linked_list1(Node *head1)
         tmp1 = tmp1->next;
     }
 }
-void print_linked_list2(Node *head2)
-{
-    Node *tmp = head2;
-    while (tmp != NULL)
-    {
-        cout << tmp->value << " ";
-
-        tmp = tmp->next;
-    }
-}
 
 int main()
 {
-    int value1, value2;
+    int value;
     Node *head1 = NULL;
-    Node *head2 = NULL;
+
     Node *tail1 = NULL;
-    Node *tail2 = NULL;
 
     while (true)
     {
-        cin >> value1 >> value2;
-        if (value1 && value2 == -1)
+        cin >> value;
+        if (value == -1)
         {
             break;
         }
-        insert_a_tail1(head1, tail1, value1);
+        insert_a_tail1(head1, tail1, value);
     }
-
-    while (true)
-    {
-        cin >> value1 >> value2;
-        if (value1 && value2 == -1)
-        {
-            break;
-        }
-        insert_a_tail1(head1, tail1, value1);
-    }
-
+    int sz = size(head1);
+    cout << sz;
     print_linked_list1(head1);
-    print_linked_list2(head2);
-
     return 0;
 }
