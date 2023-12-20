@@ -27,5 +27,14 @@ int main()
     {
         cout << value << " ";
     }
+
+    // int value;
+
+    // while (value != -1)
+    // {
+    //     cin >> value;
+    //     my_list.push_back(value);
+    // }
+
     return 0;
 }
