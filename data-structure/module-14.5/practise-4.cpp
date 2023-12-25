@@ -15,36 +15,26 @@ int main()
         q.push(x);
     }
 
-    queue<int> newQ;
+    stack<int> st;
 
     while (!q.empty())
     {
-        int k = q.front();
-        int last_element;
+        st.push(q.front());
         q.pop();
-        if (q.empty())
-        {
-            last_element = k;
-        }
-        newQ.push(k);
     }
 
-    // while (!newQ.empty())
-    // {
-    //     q.push(newQ.front());
-    //     newQ.pop();
-    // }
-
-    while (!newQ.empty())
+    queue<int> q2;
+    while (!st.empty())
     {
-        cout << newQ.front() << " ";
-        newQ.pop();
+        q2.push(st.top());
+        st.pop();
     }
-    // while (!q.empty())
-    // {
-    //     cout << q.front() << " ";
-    //     q.pop();
-    // }
+
+    while (!q2.empty())
+    {
+        cout << q2.front() << " ";
+        q2.pop();
+    }
 
     return 0;
 }
