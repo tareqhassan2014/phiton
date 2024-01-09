@@ -70,9 +70,11 @@ Node *input_tree()
         {
             q.push(p->right);
         }
-        return root;
     }
+
+    return root;
 }
+
 int count(Node *root)
 {
     if (root == NULL)
