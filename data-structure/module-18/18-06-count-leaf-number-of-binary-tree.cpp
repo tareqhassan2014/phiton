@@ -70,9 +70,11 @@ Node *input_tree()
         {
             q.push(p->right);
         }
-        return root;
     }
+
+    return root;
 }
+
 int count_leaf(Node *root)
 {
     if (root == NULL)
@@ -80,7 +82,7 @@ int count_leaf(Node *root)
 
     if (root->left == NULL && root->right == NULL)
     {
-        return 0;
+        return 1;
     }
     else
     {

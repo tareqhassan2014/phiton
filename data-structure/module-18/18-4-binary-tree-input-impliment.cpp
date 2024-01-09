@@ -33,6 +33,7 @@ Node *input_tree()
     {
         q.push(root);
     }
+
     while (!q.empty())
     {
         // node ka bar kora anbo
@@ -70,15 +71,19 @@ Node *input_tree()
         {
             q.push(p->right);
         }
-        return root;
     }
+
+    return root;
 }
+
 void level_order(Node *root)
 {
     if (root == NULL)
         return;
+
     queue<Node *> q;
     q.push(root);
+
     while (!q.empty())
     {
         // node ka bar kora anbo
