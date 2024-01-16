@@ -16,23 +16,23 @@ public:
 };
 Node *input_tree()
 {
+
     int value;
     cin >> value;
     Node *root;
     if (value == -1)
-    {
-        root = NULL;
-    }
+        root == NULL;
     else
-    {
         root = new Node(value);
-    }
+
     queue<Node *> q;
+
     // if root is not null
     if (root)
     {
         q.push(root);
     }
+
     while (!q.empty())
     {
         // node ka bar kora anbo
@@ -70,23 +70,88 @@ Node *input_tree()
         {
             q.push(p->right);
         }
-        return root;
+    }
+
+    return root;
+}
+
+void level_order(Node *root)
+{
+
+    if (root == NULL)
+        return;
+
+    queue<Node *> q;
+    q.push(root);
+
+    while (!q.empty())
+    {
+        Node *f = q.front();
+        q.pop();
+
+        cout << f->value << " ";
+
+        // children gulo print korbo
+        if (f->left != NULL)
+        {
+            q.push(f->left);
+        }
+        if (f->right != NULL)
+        {
+            q.push(f->right);
+        }
     }
 }
-int maxHight(Node *root)
-{
-    if (root == NULL)
-        return 0;
 
-    int l = maxHight(root->left);
-    int r = maxHight(root->right);
-    return max(l, r) + 1;
+void insert(Node *&root, int x)
+{
+    // base case
+    if (root == NULL)
+    {
+        root = new Node(x);
+        return;
+    }
+
+    if (x < root->value)
+    {
+        if (root->left == NULL)
+        {
+            root->left = new Node(x);
+        }
+
+        else
+        {
+            insert(root->left, x);
+        }
+    }
+
+    else
+    {
+        if (x > root->value)
+        {
+            if (root->right == NULL)
+            {
+                root->right = new Node(x);
+            }
+
+            else
+            {
+                insert(root->right, x);
+            }
+        }
+    }
 }
 
 int main()
 {
     Node *root = input_tree();
-    cout << maxHight(root) << endl;
+    // int x;
+    // cin >> x;
+    insert(root, 13);
+    insert(root, 27);
+    insert(root, 22);
+    insert(root, 33);
+    level_order(root);
 
     return 0;
 }

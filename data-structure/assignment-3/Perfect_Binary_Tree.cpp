@@ -14,25 +14,26 @@ public:
         this->right = NULL;
     }
 };
+
 Node *input_tree()
 {
+
     int value;
     cin >> value;
     Node *root;
     if (value == -1)
-    {
-        root = NULL;
-    }
+        root == NULL;
     else
-    {
         root = new Node(value);
-    }
+
     queue<Node *> q;
+
     // if root is not null
     if (root)
     {
         q.push(root);
     }
+
     while (!q.empty())
     {
         // node ka bar kora anbo
@@ -70,23 +71,36 @@ Node *input_tree()
         {
             q.push(p->right);
         }
-        return root;
     }
+
+    return root;
 }
+
+int total = 0;
+
 int maxHight(Node *root)
 {
+
     if (root == NULL)
         return 0;
 
+    total++;
+
     int l = maxHight(root->left);
     int r = maxHight(root->right);
+
     return max(l, r) + 1;
 }
 
 int main()
 {
     Node *root = input_tree();
-    cout << maxHight(root) << endl;
+
+    int max_hight = maxHight(root);
+
+    int expected_node = pow(2, max_hight) - 1;
+
+    cout << (expected_node == total ? "YES" : "NO") << endl;
 
     return 0;
 }

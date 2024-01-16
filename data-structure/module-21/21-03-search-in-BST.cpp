@@ -14,79 +14,76 @@ public:
         this->right = NULL;
     }
 };
+
 Node *input_tree()
 {
     int value;
     cin >> value;
     Node *root;
     if (value == -1)
-    {
-        root = NULL;
-    }
+        root == NULL;
     else
-    {
         root = new Node(value);
-    }
+
     queue<Node *> q;
-    // if root is not null
     if (root)
-    {
         q.push(root);
-    }
+
     while (!q.empty())
     {
-        // node ka bar kora anbo
         Node *p = q.front();
         q.pop();
-        // sob kaj akana korbo
+
         int l, r;
         cin >> l >> r;
         Node *left;
         Node *right;
         if (l == -1)
-        {
             left = NULL;
-        }
+
         else
-        {
             left = new Node(l);
-        }
         if (r == -1)
-        {
             right = NULL;
-        }
+
         else
-        {
             right = new Node(r);
-        }
+
         p->left = left;
         p->right = right;
-        // children gulo push korbo
+
         if (p->left)
-        {
             q.push(p->left);
-        }
         if (p->right)
-        {
             q.push(p->right);
-        }
-        return root;
     }
+    return root;
 }
-int maxHight(Node *root)
+
+bool search(Node *root, int x)
 {
     if (root == NULL)
-        return 0;
+        return false;
 
-    int l = maxHight(root->left);
-    int r = maxHight(root->right);
-    return max(l, r) + 1;
+    if (root->value == x)
+        return true;
+
+    if (x < root->value)
+        return search(root->left, x);
+
+    else
+        return search(root->right, x);
 }
 
 int main()
 {
     Node *root = input_tree();
-    cout << maxHight(root) << endl;
+
+    if (search(root, 18))
+        cout << "found" << endl;
+
+    else
+        cout << " Not found" << endl;
 
     return 0;
 }
