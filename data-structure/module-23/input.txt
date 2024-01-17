@@ -1,2 +1,1 @@
-7
-10 2 4 5 9 4 1
+i am a student. i am stading in class  12th.

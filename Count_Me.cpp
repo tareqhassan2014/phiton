@@ -14,16 +14,14 @@ int main()
 
     while (ss >> word)
     {
-        cout << word << endl;
-        // mp[word]++;
+
+        mp[word]++;
     }
 
     for (auto it = mp.begin(); it != mp.end(); it++)
     {
         cout << it->first << " " << it->second << " " << endl;
     }
-
-    // cout << mp["i"] << endl;
 
     return 0;
 }

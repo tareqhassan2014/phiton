@@ -19,19 +19,13 @@ class cmp
 public:
     bool operator()(student a, student b)
     {
-        if (a.name >= b.name)
+        if (a.name == b.name)
         {
-            return true;
+            return a.roll < b.roll;
         }
-        else if (a.name <= b.name)
-            return false;
-
         else
         {
-            if (a.roll <= b.roll)
-                return true;
-            else
-                return false;
+            return a.name > b.name;
         }
     }
 };
