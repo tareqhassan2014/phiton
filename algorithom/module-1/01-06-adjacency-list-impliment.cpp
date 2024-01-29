@@ -9,7 +9,7 @@ int main()
 
     vector<int> matrix[node];
 
-    while (node--)
+    while (edge--)
     {
         int a, b;
         cin >> a >> b;
