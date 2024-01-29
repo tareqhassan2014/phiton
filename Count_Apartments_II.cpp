@@ -54,7 +54,7 @@ void countRoomsInApartments()
 
     if (numApartments == 0)
     {
-        cout << "-1" << endl;
+        cout << 0 << endl;
     }
     else
     {
