@@ -2,10 +2,11 @@
 using namespace std;
 
 const int input_size = 1005;
-
-char input_greed[input_size][input_size];
+const int numDirections = 4;
 
 bool visited[input_size][input_size];
+
+char input_greed[input_size][input_size];
 
 vector<pair<int, int>> d = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
 
@@ -19,9 +20,7 @@ bool valid(int i, int j)
 void bfs(int si, int sj)
 {
     queue<pair<int, int>> q;
-
     q.push({si, sj});
-
     visited[si][sj] = true;
 
     while (!q.empty())
@@ -29,14 +28,16 @@ void bfs(int si, int sj)
         pair<int, int> par = q.front();
         int a = par.first, b = par.second;
         q.pop();
-        for (int i = 0; i < 4; i++)
+
+        for (int i = 0; i < numDirections; i++)
         {
-            int ci = a + d[i].first;
-            int cj = b + d[i].second;
-            if (valid(ci, cj) == true && visited[ci][cj] == false)
+            int nextRow = a + d[i].first;
+            int nextColumn = b + d[i].second;
+
+            if (valid(nextRow, nextColumn) && !visited[nextRow][nextColumn])
             {
-                q.push({ci, cj});
-                visited[ci][cj] = true;
+                q.push({nextRow, nextColumn});
+                visited[nextRow][nextColumn] = true;
             }
         }
     }
@@ -44,7 +45,6 @@ void bfs(int si, int sj)
 
 int main()
 {
-
     cin >> row >> column;
 
     pair<int, int> start, end;
@@ -53,20 +53,17 @@ int main()
     {
         for (int j = 0; j < column; j++)
         {
-
             char ch;
             cin >> ch;
             input_greed[i][j] = ch;
 
             if (ch == 'A')
             {
-                start.first = i;
-                start.second = j;
+                start = make_pair(i, j);
             }
             else if (ch == 'B')
             {
-                end.first = i;
-                end.second = j;
+                end = make_pair(i, j);
             }
         }
     }
