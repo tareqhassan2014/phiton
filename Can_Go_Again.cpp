@@ -1,79 +1,71 @@
 #include <bits/stdc++.h>
-#define ll long long int
 using namespace std;
+
+class Edge
+{
+public:
+    int src, dest, weight;
+
+    Edge(int src, int dest, int weight)
+    {
+        this->src = src;
+        this->dest = dest;
+        this->weight = weight;
+    }
+};
 
 int main()
 {
 
-    int node, edge;
+    int nodes, edges;
+    cin >> nodes >> edges;
 
-    cin >> node >> edge;
+    vector<Edge> graph;
 
-    ll adjacency_matrix[node][node];
-
-    for (int i = 0; i < node; i++)
+    while (edges--)
     {
-        for (int j = 0; j < node; j++)
-        {
+        int src, dest, weight;
+        cin >> src >> dest >> weight;
+        graph.push_back(Edge(src, dest, weight));
+    }
 
-            if (i == j)
+    vector<int> dist(nodes, INT_MAX);
+
+    int src, testCases;
+    cin >> src >> testCases;
+    dist[src] = 0;
+
+    for (int i = 0; i <= nodes - 1; i++)
+    {
+        for (auto edge : graph)
+        {
+            if (dist[edge.src] != INT_MAX && dist[edge.src] + edge.weight < dist[edge.dest])
             {
-                adjacency_matrix[i][j] = 0;
-            }
-            else
-            {
-                adjacency_matrix[i][j] = INT_MAX;
+                dist[edge.dest] = dist[edge.src] + edge.weight;
             }
         }
     }
 
-    while (edge--)
+    for (auto edge : graph)
     {
-        int a, b, c;
-
-        cin >> a >> b >> c;
-
-        adjacency_matrix[a][b] = c;
-    }
-
-    for (int k = 0; k < node; k++)
-    {
-        for (int i = 0; i < node; i++)
-        {
-            for (int j = 0; j < node; j++)
-            {
-                adjacency_matrix[i][j] = min(adjacency_matrix[i][j], adjacency_matrix[i][k] + adjacency_matrix[k][j]);
-            }
-        }
-    }
-
-    for (int i = 0; i < node; i++)
-    {
-        if (adjacency_matrix[i][i] < 0)
+        if (dist[edge.src] != INT_MAX && dist[edge.src] + edge.weight < dist[edge.dest])
         {
             cout << "Negative Cycle Detected" << endl;
             return 0;
         }
     }
 
-    int src;
-    cin >> src;
-
-    int numberOfQueries;
-    cin >> numberOfQueries;
-
-    while (numberOfQueries--)
+    while (testCases--)
     {
-        int destination;
-        cin >> destination;
-
-        if (adjacency_matrix[src][destination] == INT_MAX)
+        int dest;
+        cin >> dest;
+        if (dist[dest] != INT_MAX)
         {
-            cout << "Not Possible" << endl;
+            cout << dist[dest] << endl;
         }
         else
         {
-            cout << adjacency_matrix[src][destination] << endl;
+            cout << "Not Possible" << endl;
         }
     }
 
