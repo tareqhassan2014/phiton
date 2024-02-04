@@ -2,7 +2,9 @@
 using namespace std;
 char arr[20][20];
 bool vis[20][20];
+
 vector<pair<int, int>> v = {{0, 1}, {0, -1}, {-1, 0}, {1, 0}};
+
 int row, column;
 
 bool valid(int i, int j)
@@ -16,6 +18,7 @@ void dfs(int si, int sj)
 {
     cout << si << " " << sj << endl;
     vis[si][sj] = true;
+
     for (int i = 0; i < 4; i++)
     {
         int ansi = si + v[i].first;
