@@ -1,60 +1,79 @@
 #include <bits/stdc++.h>
-#define ll long long int
 using namespace std;
+
+const int N = 1e5 + 5;
+
+vector<pair<int, int>> v[N];
+
+int dis[N];
+
+void dijkstra(int src)
+{
+
+    priority_queue<pair<int, int>, vector<pair<int, int>>> pq;
+
+    pq.push({src, 0});
+
+    dis[src] = 0;
+
+    while (!pq.empty())
+    {
+        pair<int, int> parent = pq.top();
+
+        pq.pop();
+
+        int parentNode = parent.first;
+        int parentCost = parent.second;
+
+        for (pair<int, int> child : v[parentNode])
+        {
+            int childNode = child.first;
+            int childCost = child.second;
+
+            if (parentCost + childCost < dis[childNode])
+
+            {
+                dis[childNode] = parentCost + childCost;
+                pq.push({childNode, parentCost + childCost});
+            }
+        }
+    }
+}
 
 int main()
 {
-
-    ll node, edge;
+    int node, edge;
     cin >> node >> edge;
-
-    ll adj[node][node];
-
-    for (int i = 0; i < node; i++)
-    {
-        for (int j = 0; j < node; j++)
-        {
-            adj[i][j] = INT_MAX;
-            if (i == j)
-            {
-                adj[i][j] = 0;
-            }
-        }
-    }
 
     while (edge--)
     {
-        int a, b, c;
-        cin >> a >> b >> c;
+        int a, b, cost;
+        cin >> a >> b >> cost;
 
-        adj[a][b] = c;
+        v[a].push_back({b, cost});
+        v[b].push_back({a, cost});
     }
 
-    for (int k = 0; k < node; k++)
+    for (int i = 0; i < node; i++)
     {
-        for (int i = 0; i < node; i++)
-        {
-            for (int j = 0; j < node; j++)
-            {
-                if (adj[i][k] + adj[k][j] < adj[i][j])
-                {
-                    adj[i][j] = adj[i][k] + adj[k][j];
-                }
-            }
-        }
+        dis[i] = INT_MAX;
     }
 
-    int source, test_case;
-    cin >> source >> test_case;
+    int src, test_case;
+    cin >> src >> test_case;
+
+    dijkstra(src);
 
     while (test_case--)
     {
-        int dis, cost;
-        cin >> dis >> cost;
+        int destination, cost;
 
-        if (adj[source][cost] <= cost)
+        cin >> destination >> cost;
 
+        if (dis[destination] <= cost)
+        {
             cout << "YES" << endl;
+        }
         else
         {
             cout << "NO" << endl;
