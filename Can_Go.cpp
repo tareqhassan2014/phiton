@@ -1,40 +1,48 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5 + 5;
+#define ll long long int
 
-vector<pair<int, int>> v[N];
+const ll N = 1e5 + 5;
+const ll INF = 1e18;
 
-int dis[N];
+vector<pair<ll, ll>> v[N];
+ll dis[N];
 
-void dijkstra(int src)
+class CompareCell
 {
+public:
+    bool operator()(pair<ll, ll> a, pair<ll, ll> b)
+    {
+        return a.second < b.second;
+    }
+};
 
-    priority_queue<pair<int, int>, vector<pair<int, int>>> pq;
-
-    pq.push({src, 0});
-
+void dijkstra(ll src)
+{
+    priority_queue<pair<ll, ll>, vector<pair<ll, ll>>, CompareCell> pq;
+    pq.push({0, src});
     dis[src] = 0;
 
     while (!pq.empty())
     {
-        pair<int, int> parent = pq.top();
-
+        pair<ll, ll> parent = pq.top();
         pq.pop();
+        ll parentCost = parent.first;
+        ll parentNode = parent.second;
 
-        int parentNode = parent.first;
-        int parentCost = parent.second;
+        if (parentCost > dis[parentNode])
+            continue;
 
-        for (pair<int, int> child : v[parentNode])
+        for (pair<ll, ll> child : v[parentNode])
         {
-            int childNode = child.first;
-            int childCost = child.second;
+            ll childNode = child.first;
+            ll childCost = child.second;
 
-            if (parentCost + childCost < dis[childNode])
-
+            if (dis[parentNode] + childCost < dis[childNode])
             {
-                dis[childNode] = parentCost + childCost;
-                pq.push({childNode, parentCost + childCost});
+                dis[childNode] = dis[parentNode] + childCost;
+                pq.push({dis[childNode], childNode});
             }
         }
     }
@@ -42,32 +50,30 @@ void dijkstra(int src)
 
 int main()
 {
-    int node, edge;
+    ll node, edge;
     cin >> node >> edge;
 
     while (edge--)
     {
-        int a, b, cost;
+        ll a, b, cost;
         cin >> a >> b >> cost;
 
         v[a].push_back({b, cost});
-        v[b].push_back({a, cost});
     }
 
-    for (int i = 0; i < node; i++)
+    for (ll i = 0; i < node; i++)
     {
-        dis[i] = INT_MAX;
+        dis[i] = INF;
     }
 
-    int src, test_case;
+    ll src, test_case;
     cin >> src >> test_case;
 
     dijkstra(src);
 
     while (test_case--)
     {
-        int destination, cost;
-
+        ll destination, cost;
         cin >> destination >> cost;
 
         if (dis[destination] <= cost)

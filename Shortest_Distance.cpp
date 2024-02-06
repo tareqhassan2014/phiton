@@ -1,31 +1,39 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#define ll long long int
+const ll INF = 1e18;
+
 int main()
 {
     int n, m;
     cin >> n >> m;
 
-    int graph[n][n];
-
-    for (int i = 0; i < n; ++i)
-    {
-        for (int j = 0; j < n; ++j)
-        {
-            graph[i][j] = INT_MAX;
-        }
-    }
+    vector<vector<pair<int, ll>>> adjList(n);
 
     for (int i = 0; i < m; ++i)
     {
-        int u, v, w;
+        int u, v;
+        ll w;
         cin >> u >> v >> w;
-        graph[u - 1][v - 1] = min(graph[u - 1][v - 1], w);
+        adjList[u - 1].push_back({v - 1, w});
+    }
+
+    vector<vector<ll>> dist(n, vector<ll>(n, INF));
+
+    for (int i = 0; i < n; ++i)
+    {
+        for (auto edge : adjList[i])
+        {
+            int v = edge.first;
+            ll w = edge.second;
+            dist[i][v] = min(dist[i][v], w);
+        }
     }
 
     for (int i = 0; i < n; ++i)
     {
-        graph[i][i] = 0;
+        dist[i][i] = 0;
     }
 
     for (int k = 0; k < n; ++k)
@@ -34,9 +42,9 @@ int main()
         {
             for (int j = 0; j < n; ++j)
             {
-                if (graph[i][k] != INT_MAX && graph[k][j] != INT_MAX)
+                if (dist[i][k] != INF && dist[k][j] != INF)
                 {
-                    graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
                 }
             }
         }
@@ -50,13 +58,13 @@ int main()
         int u, v;
         cin >> u >> v;
 
-        if (graph[u - 1][v - 1] != INT_MAX)
+        if (dist[u - 1][v - 1] != INF)
         {
-            cout << graph[u - 1][v - 1] << endl;
+            cout << dist[u - 1][v - 1] << endl;
         }
         else
         {
-            cout << "No Connection" << endl;
+            cout << "-1" << endl;
         }
     }
 
